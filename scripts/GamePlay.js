@@ -90,8 +90,14 @@ var GamePlay = {
 		
 		} else if (cursors.left.isDown) {
 			player.body.acceleration.x = -ACCLERATION;
+			if (cursors.right.isDown) {
+				player.body.acceleration.x = 0;
+			}
 		} else if (cursors.right.isDown) {
 			player.body.acceleration.x = ACCLERATION;
+			if (cursors.left.isDown) {
+				player.body.acceleration.x = 0;
+			}
 		}
 
 		//  Stop at screen edges
