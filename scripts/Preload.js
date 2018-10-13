@@ -24,6 +24,7 @@ var PreloadState = {
 		this.load.image('title', 'assets/title.png');
 		this.load.image('lvl1', 'assets/levels/level1.png');
 		this.load.image('lvl2', 'assets/levels/level2.png');
+		this.load.image('enemy1', 'assets/enemies/enemy2.png');
 
 	},
 	create: function(){

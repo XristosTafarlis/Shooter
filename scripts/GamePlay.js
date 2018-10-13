@@ -3,6 +3,7 @@ var GamePlay = {
 		//Sounds
 		music = game.add.audio('suita');
 		gun1 = game.add.audio('gun1');
+
 		//Start background music
 		music.play('',0,0.5,true);
 
@@ -27,6 +28,20 @@ var GamePlay = {
 		game.physics.enable(player, Phaser.Physics.ARCADE);
 		player.body.maxVelocity.setTo(MAXSPEED, MAXSPEED);
 		player.body.drag.setTo(DRAG, DRAG);
+
+		//Enemy 1
+		enemy1 = game.add.group();
+		enemy1.enableBody = true;
+		enemy1.physicsBodyType = Phaser.Physics.ARCADE;
+		enemy1.createMultiple(5, 'enemy1');
+		enemy1.setAll('anchor.x', 0.5);
+		enemy1.setAll('anchor.y', 0.5);
+		enemy1.setAll('scale.x', 0.5);
+		enemy1.setAll('scale.y', 0.5);
+		enemy1.setAll('outOfBoundsKill', true);
+		enemy1.setAll('checkWorldBounds', true);
+
+		launchEnemy1();
 
 		//  And some controls to play the game with
 		cursors = game.input.keyboard.createCursorKeys();

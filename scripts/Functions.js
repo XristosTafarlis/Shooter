@@ -20,3 +20,20 @@ function fireBullet() {
 		}
 	}
 }
+
+function launchEnemy1() {
+    var MIN_ENEMY_SPACING = 300;
+    var MAX_ENEMY_SPACING = 3000;
+    var ENEMY_SPEED = 300;
+
+    var enemy = greenEnemies.getFirstExists(false);
+    if (enemy) {
+        enemy.reset(game.rnd.integerInRange -20, (0, game.width));
+        enemy.body.velocity.x = game.rnd.integerInRange(300, -300);
+        enemy.body.velocity.y = ENEMY_SPEED;
+        enemy.body.drag.x = 100;
+    }
+
+    //  Send another enemy soon
+    game.time.events.add(game.rnd.integerInRange(MIN_ENEMY_SPACING, MAX_ENEMY_SPACING), launchEnemy1);
+}
