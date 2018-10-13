@@ -26,7 +26,7 @@ function launchEnemy1() {
     var MAX_ENEMY_SPACING = 3000;
     var ENEMY_SPEED = 300;
 
-    var enemy = greenEnemies.getFirstExists(false);
+    var enemy = enemy1.getFirstExists(false);
     if (enemy) {
         enemy.reset(game.rnd.integerInRange -20, (0, game.width));
         enemy.body.velocity.x = game.rnd.integerInRange(300, -300);
