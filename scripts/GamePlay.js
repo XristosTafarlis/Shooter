@@ -29,19 +29,19 @@ var GamePlay = {
 		player.body.maxVelocity.setTo(MAXSPEED, MAXSPEED);
 		player.body.drag.setTo(DRAG, DRAG);
 
-		//Enemy 1
-		enemy1 = game.add.group();
-		enemy1.enableBody = true;
-		enemy1.physicsBodyType = Phaser.Physics.ARCADE;
-		enemy1.createMultiple(5, 'enemy1');
-		enemy1.setAll('anchor.x', 0.5);
-		enemy1.setAll('anchor.y', 0.5);
-		enemy1.setAll('scale.x', 0.5);
-		enemy1.setAll('scale.y', 0.5);
-		enemy1.setAll('outOfBoundsKill', true);
-		enemy1.setAll('checkWorldBounds', true);
+		//Enemies 1
+		enemies1 = game.add.group();
+		enemies1.enableBody = true;
+		enemies1.physicsBodyType = Phaser.Physics.ARCADE;
+		enemies1.createMultiple(5, 'enemy1');
+		enemies1.setAll('anchor.x', 0.5);
+		enemies1.setAll('anchor.y', 0.5);
+		enemies1.setAll('scale.x', 0.5);
+		enemies1.setAll('scale.y', 0.5);
+		enemies1.setAll('outOfBoundsKill', true);
+		enemies1.setAll('checkWorldBounds', true);
 
-		launchEnemy1();
+		launchEnemies1();
 
 		//  And some controls to play the game with
 		cursors = game.input.keyboard.createCursorKeys();
