@@ -22,12 +22,9 @@ function fireBullet() {
 }
 
 function launchEnemies1() {
-	var MIN_ENEMY_SPACING = 300;
-	var MAX_ENEMY_SPACING = 3000;
-
 	var enemy = enemies1.getFirstExists(false);
 	if (enemy) {
-		enemy.reset( game.width +20, game.rnd.integerInRange ( 0, game.height));
+		enemy.reset( 780, game.rnd.integerInRange ( 20, 580));
 		enemy.body.velocity.y = game.rnd.integerInRange(-200, 200);
 		enemy.body.velocity.x = -300;
 		enemy.body.drag.y = 100;
@@ -36,5 +33,5 @@ function launchEnemies1() {
 	}
 
 	//  Send another enemy soon
-	game.time.events.add(game.rnd.integerInRange(MIN_ENEMY_SPACING, MAX_ENEMY_SPACING), launchEnemies1);
+	game.time.events.add(game.rnd.integerInRange(300, 3000), launchEnemies1);
 }
