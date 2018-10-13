@@ -4,7 +4,7 @@ var GamePlay = {
 		music = game.add.audio('suita');
 		gun1 = game.add.audio('gun1');
 		//Start background music
-		music.play('',0,0.5,true);
+		music.play('',0,0.1,true);
 
 		game.scale.pageAlignHorizontally = true;
 		
