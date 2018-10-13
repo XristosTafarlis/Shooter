@@ -24,15 +24,14 @@ function fireBullet() {
 function launchEnemies1() {
 	var MIN_ENEMY_SPACING = 300;
 	var MAX_ENEMY_SPACING = 3000;
-	var ENEMY_SPEED = -300;
 
 	var enemy = enemies1.getFirstExists(false);
 	if (enemy) {
-		enemy.reset( 820, game.rnd.integerInRange (0, 600));
-		enemy.body.velocity.y = game.rnd.integerInRange(-300, 300);
-		enemy.body.velocity.x = ENEMY_SPEED;
+		enemy.reset( game.width +20, game.rnd.integerInRange ( 0, game.height));
+		enemy.body.velocity.y = game.rnd.integerInRange(-200, 200);
+		enemy.body.velocity.x = -300;
 		enemy.body.drag.y = 100;
-		if (enemy.x < -20 || enemy.y > 20 || enemy.y < -20)
+		if (enemy.x < -30 || enemy.y > 30 || enemy.y < -30)
 			enemy.kill();
 	}
 
