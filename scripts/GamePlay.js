@@ -1,7 +1,9 @@
 var GamePlay = {
 	create: function(){
-		//Start background music
+		//Sounds
 		music = game.add.audio('peru');
+		gun1 = game.add.audio('gun1');
+		//Start background music
 		music.play('',0,1,true);
 
 		game.scale.pageAlignHorizontally = true;
@@ -81,6 +83,7 @@ var GamePlay = {
 
 		//  Fire bullet
 		if (player.alive && fireButton.isDown) {
+			gun1.play('',0,1,false);
 			fireBullet();
 		}
 
