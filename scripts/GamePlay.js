@@ -1,5 +1,9 @@
 var GamePlay = {
 	create: function(){
+		//Start background music
+		music = game.add.audio('peru');
+		music.play('',0,1,true);
+
 		game.scale.pageAlignHorizontally = true;
 		
 		//  The scrolling starfield background

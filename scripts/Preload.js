@@ -14,7 +14,7 @@ var PreloadState = {
 		this.load.setPreloadSprite(loadingBar);
 		
 		//Sound preloads
-		this.load.audio('bgm', ['sounds/bgm.mp3', 'sounds/bgm.ogg']);
+		this.load.audio('peru', ['sounds/bgm.mp3', 'sounds/bgm.ogg']);
 		
 		//Image preloads
 		this.load.image('starfield', 'assets/starfield.png');
