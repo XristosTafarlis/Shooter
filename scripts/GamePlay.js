@@ -1,7 +1,7 @@
 var GamePlay = {
 	create: function(){
 		//Sounds
-		music = game.add.audio('peru');
+		music = game.add.audio('suita');
 		gun1 = game.add.audio('gun1');
 		//Start background music
 		music.play('',0,1,true);
