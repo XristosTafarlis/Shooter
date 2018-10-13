@@ -28,8 +28,9 @@ function launchEnemies1() {
 		enemy.body.velocity.y = game.rnd.integerInRange(-200, 200);
 		enemy.body.velocity.x = -300;
 		enemy.body.drag.y = 100;
-		if (enemy.x < 100)
-			enemy.kill();
+		if (enemy.x < 100){
+			enemy.reset( 820, game.rnd.integerInRange ( 20, 580));
+		}
 	}
 
 	//  Send another enemy soon
