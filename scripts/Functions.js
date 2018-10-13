@@ -33,7 +33,7 @@ function launchEnemies1() {
 		enemy.body.velocity.x = ENEMY_SPEED;
 		enemy.body.drag.y = 100;
 		if (enemy.x < -20 || enemy.y > 20 || enemy.y < -20)
-			enemy.kill;
+			enemy.kill();
 	}
 
 	//  Send another enemy soon
