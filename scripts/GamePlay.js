@@ -85,8 +85,4 @@ var GamePlay = {
 		shipTrail.x = player.x - 20;
 
 	}
-
-	render : function() {
-		
-	}
 }
