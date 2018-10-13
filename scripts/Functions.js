@@ -28,11 +28,12 @@ function launchEnemies1() {
 
 	var enemy = enemies1.getFirstExists(false);
 	if (enemy) {
-		//enemy.reset( 820, game.rnd.integerInRange (0, 600));
-		enemy.reset (820, 300);
-		//enemy.body.velocity.y = game.rnd.integerInRange(-300, 300);
+		enemy.reset( 820, game.rnd.integerInRange (0, 600));
+		enemy.body.velocity.y = game.rnd.integerInRange(-300, 300);
 		enemy.body.velocity.x = ENEMY_SPEED;
-		//enemy.body.drag.y = 100;
+		enemy.body.drag.y = 100;
+		if (enemy.x < -20 || enemy.y > 20 || enemy.y < -20)
+			enemy.kill;
 	}
 
 	//  Send another enemy soon

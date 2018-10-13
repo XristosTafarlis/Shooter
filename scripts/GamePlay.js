@@ -70,8 +70,24 @@ var GamePlay = {
 
 		if (cursors.up.isDown) {
 			player.body.acceleration.y = -ACCLERATION;
+			if (cursors.left.isDown) {
+				player.body.acceleration.x = -ACCLERATION;
+				player.body.acceleration.y = -ACCLERATION;
+			} else if (cursors.right.isDown) {
+				player.body.acceleration.x = ACCLERATION;
+				player.body.acceleration.y = -ACCLERATION;
+			}
+
 		} else if (cursors.down.isDown) {
 			player.body.acceleration.y = ACCLERATION;
+			if (cursors.left.isDown) {
+				player.body.acceleration.x = -ACCLERATION;
+				player.body.acceleration.y = ACCLERATION;
+			} else if (cursors.right.isDown) {
+				player.body.acceleration.x = ACCLERATION;
+				player.body.acceleration.y = ACCLERATION;
+			}
+		
 		} else if (cursors.left.isDown) {
 			player.body.acceleration.x = -ACCLERATION;
 		} else if (cursors.right.isDown) {
