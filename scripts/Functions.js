@@ -29,7 +29,7 @@ function launchEnemies1() {
 		//enemy.body.velocity.y = game.rnd.integerInRange(-200, 200);
 		enemy.body.velocity.x = -300;
 		//enemy.body.drag.y = 100;
-		if (enemy.x < -30 || enemy.y > 30 || enemy.y < -30)
+		if (enemy.x < -30 || enemy.y > 630 || enemy.y < -30)
 			enemy.kill();
 	}
 
