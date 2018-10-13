@@ -83,7 +83,6 @@ var GamePlay = {
 
 		//  Fire bullet
 		if (player.alive && fireButton.isDown) {
-			gun1.play('',0,1,false);
 			fireBullet();
 		}
 

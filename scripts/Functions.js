@@ -14,6 +14,7 @@ function fireBullet() {
 			bullet.angle = player.angle;
 			game.physics.arcade.velocityFromAngle(bullet.angle, BULLET_SPEED, bullet.body.velocity);
 			bullet.body.velocity.y += player.body.velocity.y;
+			gun1.play('',0,1,false);
 
 			bulletTimer = game.time.now + BULLET_SPACING;
 		}
