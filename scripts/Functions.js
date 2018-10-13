@@ -24,7 +24,7 @@ function fireBullet() {
 function launchEnemies1() {
 	var enemy = enemies1.getFirstExists(false);
 	if (enemy) {
-		enemy.reset( 720, game.rnd.integerInRange ( 20, 580));
+		enemy.reset( 820, game.rnd.integerInRange ( 20, 580));
 		enemy.body.velocity.y = game.rnd.integerInRange(-200, 200);
 		enemy.body.velocity.x = -300;
 		enemy.body.drag.y = 100;
