@@ -36,8 +36,8 @@ var GamePlay = {
 		enemies1.createMultiple(5, 'enemy1');
 		enemies1.setAll('anchor.x', 0.5);
 		enemies1.setAll('anchor.y', 0.5);
-		enemies1.setAll('scale.x', 0.5);
-		enemies1.setAll('scale.y', 0.5);
+		enemies1.setAll('scale.x', 0.75);
+		enemies1.setAll('scale.y', 0.75);
 		enemies1.setAll('outOfBoundsKill', true);
 		enemies1.setAll('checkWorldBounds', true);
 
