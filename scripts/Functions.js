@@ -28,7 +28,7 @@ function launchEnemies1() {
 
     var enemy = enemies1.getFirstExists(false);
     if (enemy) {
-        enemy.reset( 850, game.rnd.integerInRange (0, 600));
+        enemy.reset( 820, game.rnd.integerInRange (0, 600));
         enemy.body.velocity.y = game.rnd.integerInRange(-300, 300);
         enemy.body.velocity.x = ENEMY_SPEED;
         enemy.body.drag.y = 100;
