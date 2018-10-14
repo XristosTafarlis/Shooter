@@ -31,7 +31,7 @@ function launchEnemies1() {
 		enemy.body.drag.y = 100;
 
 		enemy.update = function(){
-          enemy.angle = 90 - game.math.radToDeg(Math.atan2(enemy.body.velocity.x, enemy.body.velocity.y));
+          enemy.angle = 270 - game.math.radToDeg(Math.atan2(enemy.body.velocity.x, enemy.body.velocity.y));
         }
 	}
 
