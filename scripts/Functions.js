@@ -29,9 +29,9 @@ function launchEnemies1() {
 		enemy.body.velocity.y = game.rnd.integerInRange(-200, 200);
 		enemy.body.velocity.x = -300;
 		enemy.body.drag.y = 100;
-		
+
 		enemy.update = function(){
-          enemy.angle = 180 - game.math.radToDeg(Math.atan2(enemy.body.velocity.x, enemy.body.velocity.y));
+          enemy.angle = 90 - game.math.radToDeg(Math.atan2(enemy.body.velocity.x, enemy.body.velocity.y));
         }
 	}
 
