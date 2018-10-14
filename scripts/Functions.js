@@ -14,6 +14,7 @@ function fireBullet() {
 			bullet.angle = player.angle;
 			game.physics.arcade.velocityFromAngle(bullet.angle, BULLET_SPEED, bullet.body.velocity);
 			bullet.body.velocity.y += player.body.velocity.y;
+			//Lazer sound
 			gun1.play('',0,1,false);
 
 			bulletTimer = game.time.now + BULLET_SPACING;
@@ -28,6 +29,10 @@ function launchEnemies1() {
 		enemy.body.velocity.y = game.rnd.integerInRange(-200, 200);
 		enemy.body.velocity.x = -300;
 		enemy.body.drag.y = 100;
+		
+		enemy.update = function(){
+          enemy.angle = 180 - game.math.radToDeg(Math.atan2(enemy.body.velocity.x, enemy.body.velocity.y));
+        }
 	}
 
 	//  Send another enemy soon
