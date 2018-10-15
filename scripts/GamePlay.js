@@ -40,9 +40,7 @@ var GamePlay = {
 		enemies1.setAll('scale.y', 0.75);
 		enemies1.forEach(function(enemy){
 			addEnemyEmitterTrail(enemy);
-			enemy.events.onKilled.add(function(){
-				enemy.trail.kill();
-			});
+			enemy.events.onKilled.add(function(){ enemy.trail.kill(); });
 		});
 
 		launchEnemies1();

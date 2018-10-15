@@ -48,7 +48,7 @@ function launchEnemies1() {
 	game.time.events.add(game.rnd.integerInRange(300, 3000), launchEnemies1);
 }
 
-function addEnemyEmitterTrail(enemy) {
+function addEnemyEmitterTrail() {
     var enemyTrail = game.add.emitter(enemy.x, player.y - 10, 100);
     enemyTrail.width = 10;
     enemyTrail.makeParticles('explosion', [1,2,3,4,5]);
