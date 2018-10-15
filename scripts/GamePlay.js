@@ -38,10 +38,14 @@ var GamePlay = {
 		enemies1.setAll('anchor.y', 0.5);
 		enemies1.setAll('scale.x', 0.75);
 		enemies1.setAll('scale.y', 0.75);
-		enemies1.forEach(function(enemy){
-			addEnemyEmitterTrail(enemy);
-			enemy.events.onKilled.add(function(){ enemy.trail.kill(); });
-		});
+		enemyTrail = game.add.emitter(enemy.x, player.y - 10, 100);
+		enemyTrail.width = 10;
+		enemyTrail.makeParticles('explosion', [1,2,3,4,5]);
+		enemyTrail.setXSpeed(20, -20);
+		enemyTrail.setRotation(50,-50);
+		enemyTrail.setAlpha(0.4, 0, 800);
+		enemyTrail.setScale(0.01, 0.1, 0.01, 0.1, 1000, Phaser.Easing.Quintic.Out);
+		enemy.trail = enemyTrail;
 
 		launchEnemies1();
 
