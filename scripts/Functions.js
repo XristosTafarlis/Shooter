@@ -29,6 +29,7 @@ function launchEnemies1() {
 		enemy.body.velocity.y = game.rnd.integerInRange(-200, 200);
 		enemy.body.velocity.x = -300;
 		enemy.body.drag.y = 100;
+		consloe.log("Enemy Spawned");
 
 		enemy.trail.start(false, 800, 1);
 
@@ -39,8 +40,8 @@ function launchEnemies1() {
 			enemy.trail.y = enemy.y -10;
 
 			//  Kill enemies once they go off screen
-			if (enemy.x > game.height - 200)
-				enemy.kill();
+			//if (enemy.x > game.height - 200)
+				//enemy.kill();
         }
 	}
 
