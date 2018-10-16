@@ -11,7 +11,7 @@ var GamePlay = {
 		game.scale.pageAlignHorizontally = true;
 		
 		//  The scrolling starfield background
-		starfield = game.add.tileSprite(0, 0, 800, 600, 'starfield');
+		starfield = game.add.tileSprite(0, 0, game.width, game.height, 'starfield');
 
 		//  Our bullet group
 		bullets = game.add.group();
