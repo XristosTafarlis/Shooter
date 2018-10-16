@@ -119,19 +119,20 @@ var GamePlay = {
 		//  Stop at screen edges
 		if (player.x > game.width - 30) {
 			player.x = game.width - 30;
-			player.body.acceleration.x = 0;
+			//player.body.acceleration.x = 0;
+			player.body.acceleration.x = -ACCLERATION;
 		}
 		if (player.x < 30) {
 			player.x = 30;
-			player.body.acceleration.x = 0;
+			player.body.acceleration.x = ACCLERATION;
 		}
 		if (player.y > game.height - 15) {
 			player.y = game.height - 15;
-			player.body.acceleration.y = 0;
+			player.body.acceleration.y = -ACCLERATION;
 		}
 		if (player.y < 15) {
 			player.y = 15;
-			player.body.acceleration.y = 0;
+			player.body.acceleration.y = ACCLERATION;
 		}
 
 		//  Fire bullet
