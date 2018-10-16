@@ -60,3 +60,12 @@ function addEnemyEmitterTrail(enemy) {
 	enemyTrail.setScale(0.01, 0.1, 0.01, 0.1, 1000, Phaser.Easing.Quintic.Out);
 	enemy.trail = enemyTrail;
 }
+
+function shipCollide(player, enemy) {
+	var explosion = explosions.getFirstExists(false);
+	explosion.reset(enemy.body.x + enemy.body.halfWidth, enemy.body.y + enemy.body.halfHeight);
+	explosion.body.velocity.y = enemy.body.velocity.y;
+	explosion.alpha = 0.7;
+	explosion.play('explosion', 30, false, true);
+	enemy.kill();
+}
