@@ -146,6 +146,7 @@ var GamePlay = {
 
 		//  Check collisions
     	game.physics.arcade.overlap(player, enemies1, shipCollide, null, this);
+    	game.physics.arcade.overlap(enemies1, bullets, hitEnemy, null, this);
 
 	}
 }

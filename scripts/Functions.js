@@ -70,3 +70,14 @@ function shipCollide(player, enemy) {
 	explosionSound.play('',0,0.5,false);
 	enemy.kill();
 }
+
+function hitEnemy(enemy, bullet) {
+	var explosion = explosions.getFirstExists(false);
+	explosion.reset(bullet.body.x + bullet.body.halfWidth, bullet.body.y + bullet.body.halfHeight);
+	explosion.body.velocity.y = enemy.body.velocity.y;
+	explosion.alpha = 0.7;
+	explosion.play('explosion', 30, false, true);
+	explosionSound.play('',0,0.5,false);
+	enemy.kill();
+	bullet.kill()
+}
