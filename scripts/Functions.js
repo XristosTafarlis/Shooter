@@ -37,11 +37,11 @@ function launchEnemies1() {
 			enemy.angle = 270 - game.math.radToDeg(Math.atan2(enemy.body.velocity.x, enemy.body.velocity.y));
 
 			enemy.trail.x = enemy.x;
-			enemy.trail.y = enemy.y -10;
+			enemy.trail.y = enemy.y;
 
-			//  Kill enemies once they go off screen
-			//if (enemy.x > game.height - 200)
-				//enemy.kill();
+			//Kill enemies off screen
+			if (enemy.x < -200)
+				enemy.kill();
         }
 	}
 
