@@ -29,7 +29,6 @@ function launchEnemies1() {
 		enemy.body.velocity.y = game.rnd.integerInRange(-200, 200);
 		enemy.body.velocity.x = -300;
 		enemy.body.drag.y = 100;
-		console.log("Enemy Spawned");
 
 		enemy.trail.start(false, 800, 1);
 
@@ -48,7 +47,6 @@ function launchEnemies1() {
 	//  Send another enemy soon
 	game.time.events.add(game.rnd.integerInRange(300, 3000), launchEnemies1);
 }
-
 
 function addEnemyEmitterTrail(enemy) {
 	var enemyTrail = game.add.emitter(enemy.x, player.y - 10, 100);
@@ -69,6 +67,9 @@ function shipCollide(player, enemy) {
 	explosion.play('explosion', 30, false, true);
 	explosionSound.play('',0,0.5,false);
 	enemy.kill();
+
+	player.damage(enemy.damageAmount);
+	shields.render();
 }
 
 function hitEnemy(enemy, bullet) {

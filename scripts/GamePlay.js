@@ -25,10 +25,14 @@ var GamePlay = {
 
 		//  The hero!
 		player = game.add.sprite(100, game.height / 2, 'ship');
+		player.health = 100;
 		player.anchor.setTo(0.5, 0.5);
 		game.physics.enable(player, Phaser.Physics.ARCADE);
 		player.body.maxVelocity.setTo(MAXSPEED, MAXSPEED);
 		player.body.drag.setTo(DRAG, DRAG);
+		player.events.onKilled.add(function(){
+			shipTrail.kill();
+		});
 
 		//Enemies 1
 		enemies1 = game.add.group();
@@ -40,11 +44,12 @@ var GamePlay = {
 		enemies1.setAll('scale.x', 0.75);
 		enemies1.setAll('scale.y', 0.75);
 		enemies1.forEach(function(enemy){
-        addEnemyEmitterTrail(enemy);
-        enemy.events.onKilled.add(function(){
-            enemy.trail.kill();
-        });
-    });
+			addEnemyEmitterTrail(enemy);
+			enemy.damageAmount = 20;
+			enemy.events.onKilled.add(function(){
+				enemy.trail.kill();
+			});
+		});
 
 		launchEnemies1();
 
@@ -73,6 +78,12 @@ var GamePlay = {
 		explosions.forEach( function(explosion) {
 			explosion.animations.add('explosion');
     	});
+
+		//  Shields
+		shields = game.add.text(game.world.width - 150, 10, 'Shields: ' + player.health +'%', { font: '20px Arial', fill: '#fff' });
+		shields.render = function () {
+			shields.text = 'Shields: ' + Math.max(player.health, 0) +'%';
+		};
 	},
 
 	update: function() {
@@ -136,7 +147,7 @@ var GamePlay = {
 		}
 
 		//  Fire bullet
-		if (player.alive && fireButton.isDown) {
+		if (player.alive && (fireButton.isDown || game.input.activePointer.isDown)) {
 			fireBullet();
 		}
 
@@ -145,8 +156,8 @@ var GamePlay = {
 		shipTrail.x = player.x - 20;
 
 		//  Check collisions
-    	game.physics.arcade.overlap(player, enemies1, shipCollide, null, this);
-    	game.physics.arcade.overlap(enemies1, bullets, hitEnemy, null, this);
+		game.physics.arcade.overlap(player, enemies1, shipCollide, null, this);
+		game.physics.arcade.overlap(enemies1, bullets, hitEnemy, null, this);
 
 	}
 }
