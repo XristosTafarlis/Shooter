@@ -85,7 +85,7 @@ function launchEnemies2() {
 	}
 
 	//  Send another wave soon
-	Enemy2Timer = game.time.events.add(timeBetweenWaves, launchBlueEnemy);
+	Enemy2Timer = game.time.events.add(timeBetweenWaves, launchEnemies2);
 }
 
 function addEnemyEmitterTrail(enemy) {
