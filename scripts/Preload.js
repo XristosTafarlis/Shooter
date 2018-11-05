@@ -28,7 +28,7 @@ var PreloadState = {
 		this.load.image('enemy1', 'assets/enemies/enemy2.png');
 
 		//Other preloads
-		this.load.bitmapFont('spacefont', '/assets/spacefont/spacefont.png', '/assets/spacefont/spacefont.xml');
+		this.load.bitmapFont('spacefont', '/assets/spacefont/Font.png', '/assets/spacefont/Font.xml');
 		this.load.spritesheet('explosion', 'assets/explode.png', 128, 128);
 
 	},
