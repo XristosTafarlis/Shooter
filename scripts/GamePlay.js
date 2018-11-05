@@ -82,17 +82,17 @@ var GamePlay = {
 			explosion.animations.add('explosion');
     	});
 
-		//  Shields
-		shields = game.add.text(game.world.width - 150, 10, 'Shields: ' + player.health +'%', { font: '20px Arial', fill: '#fff' });
+		//  Shields stat
+		shields = game.add.bitmapText(game.world.width - 250, 10, 'spacefont', '' + player.health +'%', 50);
 		shields.render = function () {
-			shields = game.add.bitmapText(game.world.width - 250, 10, 'spacefont', '' + player.health +'%', 50);
+			shields.text = 'Shields: ' + Math.max(player.health, 0) +'%';
 		};
 		shields.render();
 
 		//  Score
-		scoreText = game.add.text(10, 10, '', { font: '20px Arial', fill: '#fff' });
+		scoreText = game.add.bitmapText(10, 10, 'spacefont', '', 50);
 		scoreText.render = function () {
-			scoreText = game.add.bitmapText(10, 10, 'spacefont', '', 50);
+			scoreText.text = 'Score: ' + score;
 		};
 		scoreText.render();
 
