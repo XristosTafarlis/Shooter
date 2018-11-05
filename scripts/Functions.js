@@ -45,7 +45,7 @@ function launchEnemies1() {
 	}
 
 	//  Send another enemy soon
-	game.time.events.add(game.rnd.integerInRange(300, 3000), launchEnemies1);
+	Enemy1Timer = game.time.events.add(game.rnd.integerInRange(MIN_ENEMY_SPACING, MAX_ENEMY_SPACING), launchGreenEnemy);
 }
 
 function addEnemyEmitterTrail(enemy) {
@@ -81,4 +81,21 @@ function hitEnemy(enemy, bullet) {
 	explosionSound.play('',0,0.5,false);
 	enemy.kill();
 	bullet.kill()
+}
+
+function restart () {
+	//  Reset the enemies
+	enemies1.callAll('kill');
+	game.time.events.remove(Enemy1Timer);
+	game.time.events.add(1000, launchEnemies1);
+
+	//  Revive the player
+	player.revive();
+	player.health = 100;
+	shields.render();
+	score = 0;
+	scoreText.render();
+
+	//  Hide the text
+	gameOver.visible = false;
 }

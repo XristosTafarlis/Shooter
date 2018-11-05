@@ -33,6 +33,9 @@ var GamePlay = {
 		player.events.onKilled.add(function(){
 			shipTrail.kill();
 		});
+		player.events.onRevived.add(function(){
+			shipTrail.start(false, 5000, 10);
+		});
 
 		//Enemies 1
 		enemies1 = game.add.group();
@@ -51,7 +54,7 @@ var GamePlay = {
 			});
 		});
 
-		launchEnemies1();
+		game.time.events.add(1000, launchEnemies1);
 
 		//  And some controls to play the game with
 		cursors = game.input.keyboard.createCursorKeys();
@@ -84,6 +87,12 @@ var GamePlay = {
 		shields.render = function () {
 			shields.text = 'Shields: ' + Math.max(player.health, 0) +'%';
 		};
+
+		//  Game Over
+		gameOver = game.add.text(game.world.centerX, game.world.centerY, 'GAME OVER!', { font: '84px Arial', fill: '#fff' });
+		gameOver.anchor.setTo(0.5, 0.5);
+		gameOver.visible = false;
+
 	},
 
 	update: function() {
@@ -159,5 +168,23 @@ var GamePlay = {
 		game.physics.arcade.overlap(player, enemies1, shipCollide, null, this);
 		game.physics.arcade.overlap(enemies1, bullets, hitEnemy, null, this);
 
+		//  Game over?
+		if (! player.alive && gameOver.visible === false) {
+			gameOver.visible = true;
+			var fadeInGameOver = game.add.tween(gameOver);
+			fadeInGameOver.to({alpha: 1}, 1000, Phaser.Easing.Quintic.Out);
+			fadeInGameOver.onComplete.add(setResetHandlers);
+			fadeInGameOver.start();
+			function setResetHandlers() {
+				//  The restart handler
+				tapRestart = game.input.onTap.addOnce(_restart,this);
+				spaceRestart = fireButton.onDown.addOnce(_restart,this);
+				function _restart() {
+					tapRestart.detach();
+					spaceRestart.detach();
+					restart();
+				}
+			}
+		}
 	}
 }
