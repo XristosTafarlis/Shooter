@@ -56,6 +56,23 @@ var GamePlay = {
 
 		game.time.events.add(1000, launchEnemies1);
 
+		//Enemies 2
+		enemies2 = game.add.group();
+		enemies2.enableBody = true;
+		enemies2.physicsBodyType = Phaser.Physics.ARCADE;
+		enemies2.createMultiple(30, 'enemy2');
+		enemies2.setAll('anchor.x', 0.5);
+		enemies2.setAll('anchor.y', 0.5);
+		enemies2.setAll('scale.x', 0.5);
+		enemies2.setAll('scale.y', 0.5);
+		enemies2.setAll('angle', 180);
+		enemies2.forEach(function(enemy){
+			enemy.damageAmount = 40;
+		});
+
+		game.time.events.add(1000, launchEnemies2);
+
+
 		//  And some controls to play the game with
 		cursors = game.input.keyboard.createCursorKeys();
 		fireButton = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
@@ -176,6 +193,9 @@ var GamePlay = {
 		//  Check collisions
 		game.physics.arcade.overlap(player, enemies1, shipCollide, null, this);
 		game.physics.arcade.overlap(enemies1, bullets, hitEnemy, null, this);
+
+		game.physics.arcade.overlap(player, enemies2, shipCollide, null, this);
+		game.physics.arcade.overlap(enemies2, bullets, hitEnemy, null, this);
 
 		//  Game over?
 		if (! player.alive && gameOver.visible === false) {

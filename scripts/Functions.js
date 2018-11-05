@@ -48,6 +48,46 @@ function launchEnemies1() {
 	Enemy1Timer = game.time.events.add(game.rnd.integerInRange(300, 3000), launchEnemies1);
 }
 
+function launchEnemies2() {
+	var startingY = game.rnd.integerInRange(100, game.width - 100);
+	var horizontalSpeed = 180;
+	var spread = 60;
+	var frequency = 70;
+	var horizontalSpacing = 70;
+	var numEnemiesInWave = 5;
+	var timeBetweenWaves = 7000;
+
+	//  Launch wave
+	for (var i = 0; i < numEnemiesInWave; i++) {
+		var enemy = enemies2.getFirstExists(false);
+		if (enemy) {
+			enemy.startingY = startingY;
+			enemy.reset(game.hight / 2, -horizontalSpacing * i);
+			enemy.body.velocity.x = horizontalSpeed;
+
+			//  Update function for each enemy
+			enemy.update = function(){
+
+				//  Wave movement
+				this.body.y = this.startingY + Math.sin((this.x) / frequency) * spread;
+				
+				//  Squish and rotate ship for illusion of "banking"
+				bank = Math.cos((this.x + 60) / frequency)
+				this.scale.y = 0.5 - Math.abs(bank) / 8;
+				this.angle = 180 - bank * 2;
+				
+				//  Kill enemies once they go off screen
+				if (this.x > game.width - 200) {
+					this.kill();
+				}
+			};
+		}
+	}
+
+	//  Send another wave soon
+	Enemy2Timer = game.time.events.add(timeBetweenWaves, launchBlueEnemy);
+}
+
 function addEnemyEmitterTrail(enemy) {
 	var enemyTrail = game.add.emitter(enemy.x, player.y - 10, 100);
 	enemyTrail.width = 10;
@@ -69,7 +109,7 @@ function shipCollide(player, enemy) {
 	enemy.kill();
 
 	player.damage(enemy.damageAmount);
-	//shields.render();
+	shields.render();
 }
 
 function hitEnemy(enemy, bullet) {
@@ -92,6 +132,9 @@ function restart () {
 	enemies1.callAll('kill');
 	game.time.events.remove(Enemy1Timer);
 	game.time.events.add(1000, launchEnemies1);
+
+	enemies2.callAll('kill');
+    game.time.events.remove(Enemy2Timer);
 
 	//  Revive the player
 	player.revive();
