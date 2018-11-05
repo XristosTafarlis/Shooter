@@ -81,6 +81,10 @@ function hitEnemy(enemy, bullet) {
 	explosionSound.play('',0,0.5,false);
 	enemy.kill();
 	bullet.kill()
+
+	// Increase score
+	score += enemy.damageAmount * 10;
+	scoreText.render()
 }
 
 function restart () {
