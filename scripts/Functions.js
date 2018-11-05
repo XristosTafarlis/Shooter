@@ -69,7 +69,7 @@ function shipCollide(player, enemy) {
 	enemy.kill();
 
 	player.damage(enemy.damageAmount);
-	shields.render();
+	//shields.render();
 }
 
 function hitEnemy(enemy, bullet) {
