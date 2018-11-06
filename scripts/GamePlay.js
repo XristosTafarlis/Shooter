@@ -72,6 +72,21 @@ var GamePlay = {
 		game.time.events.add(1000, launchEnemies2);
 
 
+		// Enemy's bullets
+		enemy2Bullets = game.add.group();
+		enemy2Bullets.enableBody = true;
+		enemy2Bullets.physicsBodyType = Phaser.Physics.ARCADE;
+		enemy2Bullets.createMultiple(30, 'enemy2bullet');
+		enemy2Bullets.callAll('crop', null, {x: 90, y: 0, width: 90, height: 70});
+		enemy2Bullets.setAll('alpha', 0.9);
+		enemy2Bullets.setAll('anchor.x', 0.5);
+		enemy2Bullets.setAll('anchor.y', 0.5);
+		enemy2Bullets.setAll('outOfBoundsKill', true);
+		enemy2Bullets.setAll('checkWorldBounds', true);
+		enemy2Bullets.forEach(function(enemy){
+		    enemy.body.setSize(20, 20);
+		});
+
 		//  And some controls to play the game with
 		cursors = game.input.keyboard.createCursorKeys();
 		fireButton = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
@@ -196,6 +211,8 @@ var GamePlay = {
 		game.physics.arcade.overlap(player, enemies2, shipCollide, null, this);
 		game.physics.arcade.overlap(enemies2, bullets, hitEnemy, null, this);
 
+		game.physics.arcade.overlap(enemy2bullets, player, enemyHitsPlayer, null, this);
+
 		//  Game over?
 		if (! player.alive && gameOver.visible === false) {
 			gameOver.visible = true;
@@ -205,6 +222,7 @@ var GamePlay = {
 			fadeInGameOver.onComplete.add(setResetHandlers);
 			fadeInGameOver.start();
 			function setResetHandlers() {
+				
 				//  The restart handler
 				tapRestart = game.input.onTap.addOnce(_restart,this);
 				spaceRestart = fireButton.onDown.addOnce(_restart,this);

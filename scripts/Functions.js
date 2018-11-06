@@ -65,6 +65,12 @@ function launchEnemies2() {
 			enemy.reset(1200 + horizontalSpacing * i, game.height / 2);
 			enemy.body.velocity.x = horizontalSpeed;
 
+			//  Set up firing
+			var bulletSpeed = 400;
+			var firingDelay = 2000;
+			enemy.bullets = 1;
+			enemy.lastShot = 0;
+
 			//  Update function for each enemy
 			enemy.update = function(){
 
@@ -75,6 +81,17 @@ function launchEnemies2() {
 				bank = Math.cos((this.x + 60) / frequency)
 				this.scale.y = 0.5 - Math.abs(bank) / 8;
 				this.angle = 180 - bank * 2;
+
+				//  Fire
+				enemyBullet = enemy2bullets.getFirstExists(false);
+				if (enemyBullet && his.alive && this.bullets && this.y > game.width / 8 && game.time.now > firingDelay + this.lastShot) {
+					this.lastShot = game.time.now;
+					this.bullets--;
+					enemyBullet.reset(this.x, this.y + this.height / 2);
+					enemyBullet.damageAmount = this.damageAmount;
+					var angle = game.physics.arcade.moveToObject(enemyBullet, player, bulletSpeed);
+					enemyBullet.angle = game.math.radToDeg(angle);
+				}
 				
 				//  Kill enemies once they go off screen
 				if (this.x < -200) {
@@ -127,6 +144,17 @@ function hitEnemy(enemy, bullet) {
 	scoreText.render()
 }
 
+function enemyHitsPlayer (player, bullet) {
+	var explosion = explosions.getFirstExists(false);
+	explosion.reset(player.body.x + player.body.halfWidth, player.body.y + player.body.halfHeight);
+	explosion.alpha = 0.7;
+	explosion.play('explosion', 30, false, true);
+	bullet.kill();
+
+	player.damage(bullet.damageAmount);
+	shields.render()
+}
+
 function restart () {
 	//  Reset the enemies
 	enemies1.callAll('kill');
@@ -134,6 +162,7 @@ function restart () {
 	game.time.events.add(1000, launchEnemies1);
 
 	enemies2.callAll('kill');
+	enemy2bullets.callAll('kill');
     game.time.events.remove(Enemy2Timer);
     game.time.events.add(7000, launchEnemies2);
 
