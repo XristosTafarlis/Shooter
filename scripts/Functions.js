@@ -50,7 +50,7 @@ function launchEnemies1() {
 
 function launchEnemies2() {
 	var startingY = game.rnd.integerInRange(100, game.width - 100);
-	var horizontalSpeed = 180;
+	var horizontalSpeed = -180;
 	var spread = 60;
 	var frequency = 70;
 	var horizontalSpacing = 70;
@@ -77,7 +77,7 @@ function launchEnemies2() {
 				this.angle = 180 - bank * 2;
 				
 				//  Kill enemies once they go off screen
-				if (this.x > game.width - 200) {
+				if (this.x < -200) {
 					this.kill();
 				}
 			};
