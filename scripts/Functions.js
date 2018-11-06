@@ -55,7 +55,7 @@ function launchEnemies2() {
 	var frequency = 70;
 	var horizontalSpacing = 70;
 	var numEnemiesInWave = 5;
-	var timeBetweenWaves = 5500;
+	var timeBetweenWaves = 7000;
 
 	//  Launch wave
 	for (var i = 0; i < numEnemiesInWave; i++) {
@@ -131,7 +131,7 @@ function restart () {
 	//  Reset the enemies
 	enemies1.callAll('kill');
 	game.time.events.remove(Enemy1Timer);
-	game.time.events.add(2000, launchEnemies1);
+	game.time.events.add(1000, launchEnemies1);
 
 	enemies2.callAll('kill');
     game.time.events.remove(Enemy2Timer);
