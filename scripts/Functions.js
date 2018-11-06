@@ -61,6 +61,7 @@ function launchEnemies2() {
 	for (var i = 0; i < numEnemiesInWave; i++) {
 		var enemy = enemies2.getFirstExists(false);
 		if (enemy) {
+			enemy.angle = 180;
 			enemy.startingY = startingY;
 			enemy.reset(1200 + horizontalSpacing * i, game.height / 2);
 			enemy.body.velocity.x = horizontalSpeed;
