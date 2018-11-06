@@ -84,7 +84,7 @@ function launchEnemies2() {
 
 				//  Fire
 				enemyBullet = enemy2Bullets.getFirstExists(false);
-				if (enemyBullet && his.alive && this.bullets && this.y > game.width / 8 && game.time.now > firingDelay + this.lastShot) {
+				if (enemyBullet && this.alive && this.bullets && this.y > game.width / 8 && game.time.now > firingDelay + this.lastShot) {
 					this.lastShot = game.time.now;
 					this.bullets--;
 					enemyBullet.reset(this.x, this.y + this.height / 2);
