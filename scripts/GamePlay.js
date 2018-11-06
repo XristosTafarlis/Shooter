@@ -64,7 +64,7 @@ var GamePlay = {
 		enemies2.setAll('anchor.x', 0.5);
 		enemies2.setAll('anchor.y', 0.5);
 		enemies2.setAll('scale.x', 0.75);
-		enemies2.setAll('scale.y', 0.75);
+		enemies2.setAll('scale.y', 1);
 		enemies2.forEach(function(enemy){
 			enemy.damageAmount = 40;
 		});

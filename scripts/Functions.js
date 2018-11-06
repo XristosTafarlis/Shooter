@@ -49,7 +49,7 @@ function launchEnemies1() {
 }
 
 function launchEnemies2() {
-	var startingY = game.rnd.integerInRange(100, game.width - 100);
+	var startingY = game.rnd.integerInRange(100, game.height - 100);
 	var horizontalSpeed = -180;
 	var spread = 60;
 	var frequency = 70;
@@ -135,7 +135,7 @@ function restart () {
 
 	enemies2.callAll('kill');
     game.time.events.remove(Enemy2Timer);
-    game.time.events.add(7000, launchEnemies1);
+    game.time.events.add(7000, launchEnemies2);
 
 	//  Revive the player
 	player.revive();
