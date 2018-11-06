@@ -64,7 +64,8 @@ var GamePlay = {
 		enemies2.setAll('anchor.x', 0.5);
 		enemies2.setAll('anchor.y', 0.5);
 		enemies2.setAll('scale.x', 0.75);
-		enemies2.setAll('scale.y', 1.25);
+		enemies2.setAll('scale.y', 0.75);
+		enemies2.setAll('angle', 180);
 		enemies2.forEach(function(enemy){
 			enemy.damageAmount = 40;
 		});
@@ -77,7 +78,7 @@ var GamePlay = {
 		enemy2Bullets.enableBody = true;
 		enemy2Bullets.physicsBodyType = Phaser.Physics.ARCADE;
 		enemy2Bullets.createMultiple(30, 'enemy2Bullet');
-		enemy2Bullets.callAll('crop', null, {x: 90, y: 0, width: 90, height: 70});
+		//enemy2Bullets.callAll('crop', null, {x: 90, y: 0, width: 90, height: 70});
 		enemy2Bullets.setAll('alpha', 0.9);
 		enemy2Bullets.setAll('anchor.x', 0.5);
 		enemy2Bullets.setAll('anchor.y', 0.5);
