@@ -27,7 +27,7 @@ var PreloadState = {
 		this.load.image('lvl2', 'assets/levels/level2.png');
 		this.load.image('enemy1', 'assets/enemies/enemy2.png');
 		this.load.image('enemy2', 'assets/enemies/enemy3.png');
-		this.load.image('enemy2bullet', 'assets/bullets/bullet2.png');
+		this.load.image('enemy2Bullet', 'assets/bullets/bullet2.png');
 
 		//Other preloads
 		this.load.bitmapFont('spacefont', '/assets/spacefont/Font.png', '/assets/spacefont/Font.xml');

@@ -83,7 +83,7 @@ function launchEnemies2() {
 				this.angle = 180 - bank * 2;
 
 				//  Fire
-				enemyBullet = enemy2bullets.getFirstExists(false);
+				enemyBullet = enemy2Bullets.getFirstExists(false);
 				if (enemyBullet && his.alive && this.bullets && this.y > game.width / 8 && game.time.now > firingDelay + this.lastShot) {
 					this.lastShot = game.time.now;
 					this.bullets--;
@@ -162,7 +162,7 @@ function restart () {
 	game.time.events.add(1000, launchEnemies1);
 
 	enemies2.callAll('kill');
-	enemy2bullets.callAll('kill');
+	enemy2Bullets.callAll('kill');
     game.time.events.remove(Enemy2Timer);
     game.time.events.add(7000, launchEnemies2);
 
